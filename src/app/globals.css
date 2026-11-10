@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. "Washi paper & sumi ink": warm paper backgrounds, ink text,
+ * vermilion (朱色) accent. Level colours run green → blue → amber → orange → crimson.
+ */
+:root {
+  --paper: #faf7f1;
+  --paper-raised: #ffffff;
+  --paper-sunken: #f1ece2;
+  --ink: #1d1b18;
+  --ink-soft: #5b5650;
+  --ink-faint: #8f8981;
+  --line: #e3dccf;
+  --shu: #c8432b;
+  --shu-soft: #f6e2dc;
+  --highlight: #fde68a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #15130f;
+    --paper-raised: #1e1b16;
+    --paper-sunken: #0f0d0a;
+    --ink: #ece6dc;
+    --ink-soft: #b2aa9e;
+    --ink-faint: #7d766c;
+    --line: #2f2a22;
+    --shu: #e26a51;
+    --shu-soft: #3a211b;
+    --highlight: #7a5d12;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-sunken: var(--paper-sunken);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-shu: var(--shu);
+  --color-shu-soft: var(--shu-soft);
+  --color-highlight: var(--highlight);
+}
+
+@theme {
+  --color-n5: #2f9e6e;
+  --color-n4: #2f7fc1;
+  --color-n3: #c7921a;
+  --color-n2: #d9662b;
+  --color-n1: #c23a5b;
+
+  --font-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic", Meiryo,
+    system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", "Source Han Serif", Georgia, serif;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--shu-soft);
+}
+
+/* Furigana sizing that doesn't push lines apart too much. */
+ruby rt {
+  font-size: 0.5em;
+  color: var(--ink-faint);
+  letter-spacing: 0;
+  user-select: none;
+}
+
+.reader-text {
+  line-height: 2.4;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+:focus-visible {
+  outline: 2px solid var(--shu);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
